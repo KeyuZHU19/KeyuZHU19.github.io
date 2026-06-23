@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160" role="img" aria-label="China Unicom app badge">
+  <rect width="160" height="160" rx="28" fill="#ffffff"/>
+  <image href="/assets/images/badges/chinaunicom-logo.png" x="36" y="18" width="88" height="88"/>
+  <g fill="#111111" font-family="Arial, Helvetica, sans-serif" font-weight="700" text-anchor="middle">
+    <text x="80" y="114" font-size="30">Ch<tspan fill="#e60012">i</tspan>na</text>
+    <text x="80" y="142" font-size="30">un<tspan fill="#e60012">i</tspan>com</text>
+  </g>
+</svg>

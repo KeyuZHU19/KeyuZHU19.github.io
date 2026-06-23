@@ -1,0 +1,290 @@
+<style>
+    .app-hero-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 220px;
+        gap: 2rem;
+        align-items: start;
+    }
+
+    .app-hero-copy {
+        max-width: 48rem;
+    }
+
+    .app-hero-name {
+        font-size: 2.4rem;
+        line-height: 1.05;
+        font-weight: 800;
+        color: #0f172a;
+        margin: 0;
+    }
+
+    .app-hero-meta {
+        margin-top: 0.85rem;
+        color: #334155;
+        font-size: 1.05rem;
+        line-height: 1.55;
+    }
+
+    .app-hero-meta-line {
+        display: block;
+    }
+
+    .app-hero-meta-line--primary {
+        font-weight: 700;
+        color: #0f172a;
+    }
+
+    .app-hero-meta-line--secondary {
+        font-weight: 600;
+        color: #31517d;
+    }
+
+    .app-hero-bio {
+        margin-top: 1.2rem;
+        color: #1f2937;
+        font-size: 1rem;
+        line-height: 1.72;
+    }
+
+    .app-hero-bio p:last-child {
+        margin-bottom: 0;
+    }
+
+    .app-hero-panels {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1rem;
+        margin-top: 1.4rem;
+    }
+
+    .app-hero-panel {
+        min-height: 100%;
+        padding: 1.15rem 1.2rem 1rem;
+        border: 1px solid rgba(203, 213, 225, 0.7);
+        border-radius: 18px;
+        background: linear-gradient(180deg, #f8fbff 0%, #ffffff 100%);
+        box-shadow: 0 10px 28px rgba(15, 23, 42, 0.04);
+    }
+
+    .app-hero-panel-title {
+        margin: 0;
+        font-size: 1rem;
+        font-weight: 700;
+        color: #0f172a;
+    }
+
+    .app-hero-panel-text {
+        margin-top: 0.85rem;
+        color: #1f2937;
+        font-size: 0.98rem;
+        line-height: 1.6;
+    }
+
+    .app-hero-interest-list {
+        margin: 0;
+        padding-left: 1.15rem;
+    }
+
+    .app-hero-interest-list li + li,
+    .app-hero-misc-list li + li {
+        margin-top: 0.45rem;
+    }
+
+    .app-hero-interest-label {
+        font-weight: 700;
+        color: #0f172a;
+    }
+
+    .app-hero-misc-list {
+        margin: 0;
+        padding-left: 1.15rem;
+    }
+
+    .app-hero-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.9rem 1.2rem;
+        margin-top: 1.4rem;
+        padding-top: 1rem;
+        border-top: 1px solid rgba(148, 163, 184, 0.2);
+    }
+
+    .app-hero-link {
+        color: #0f4fb0;
+        text-decoration: none;
+        font-size: 0.98rem;
+        white-space: nowrap;
+    }
+
+    .app-hero-link:hover {
+        color: #0b3d88;
+        text-decoration: none;
+    }
+
+    .app-hero-portrait {
+        width: 220px;
+        height: 220px;
+        object-fit: cover;
+        object-position: center top;
+        border-radius: 20px;
+        border: 1px solid rgba(226, 232, 240, 0.95);
+        box-shadow: 0 14px 32px rgba(15, 23, 42, 0.08);
+        display: block;
+    }
+
+    @media (max-width: 767.98px) {
+        .app-hero-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .app-hero-name {
+            font-size: 2rem;
+        }
+
+        .app-hero-panels {
+            grid-template-columns: 1fr;
+        }
+
+        .app-hero-copy {
+            max-width: none;
+        }
+
+        .app-hero-portrait {
+            width: 150px;
+            height: 150px;
+        }
+    }
+</style>
+
+<div class="row">
+    <div class="col">
+        <div class="card border-0 shadow-sm bg-white">
+            <div class="card-body p-4 p-md-5">
+                <div class="app-hero-grid">
+                    <div class="app-hero-copy">
+                        <h1 class="app-hero-name">
+                            {{ site.data.profile.primary_name }}{% if site.data.profile.secondary_name %} <small>{{ site.data.profile.secondary_name }}</small>{% endif %}
+                        </h1>
+
+                        <div class="app-hero-meta">
+                            {% for position in site.data.profile.positions %}
+                            <div class="app-hero-meta-line {% if forloop.first %}app-hero-meta-line--primary{% else %}app-hero-meta-line--secondary{% endif %}">{{ position.name }}</div>
+                            {% endfor %}
+                        </div>
+
+                        <div class="app-hero-bio" {% if site.data.profile.short_bio_text_justify %}style="text-align: justify;"{% endif %}>
+                            {{ site.data.profile.short_bio }}
+                        </div>
+
+                        {% if site.data.profile.research_interests or site.data.profile.misc %}
+                        <div class="app-hero-panels">
+                            {% if site.data.profile.research_interests %}
+                            <div class="app-hero-panel">
+                                <h2 class="app-hero-panel-title">Research Interests</h2>
+                                <div class="app-hero-panel-text">
+                                    <ul class="app-hero-interest-list">
+                                        {% for interest in site.data.profile.research_interests %}
+                                        {% assign interest_parts = interest | split: ": " %}
+                                        <li>
+                                            {% if interest_parts.size > 1 %}
+                                            <span class="app-hero-interest-label">{{ interest_parts[0] }}</span>: {{ interest_parts[1] }}
+                                            {% else %}
+                                            <span class="app-hero-interest-label">{{ interest }}</span>
+                                            {% endif %}
+                                        </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                            {% endif %}
+
+                            {% if site.data.profile.misc %}
+                            <div class="app-hero-panel">
+                                <h2 class="app-hero-panel-title">Misc</h2>
+                                <div class="app-hero-panel-text">
+                                    <ul class="app-hero-misc-list">
+                                        {% for item in site.data.profile.misc %}
+                                        <li>{{ item }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                            {% endif %}
+                        </div>
+                        {% endif %}
+
+                        <div class="app-hero-links">
+                            <a class="app-hero-link" href="mailto:{{ site.data.profile.email | encode_email }}">
+                                <i class="fas fa-at"></i> {{ site.data.profile.email | replace: "@", "(at)" }}
+                            </a>
+
+                            {% if site.data.profile.github %}
+                            <a class="app-hero-link" target="_blank" href="https://github.com/{{ site.data.profile.github }}">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                            {% endif %}
+
+                            {% if site.data.profile.twitter %}
+                            <a class="app-hero-link" target="_blank" href="https://twitter.com/{{ site.data.profile.twitter }}">
+                                <i class="fab fa-twitter"></i> Twitter
+                            </a>
+                            {% endif %}
+
+                            {% if site.data.profile.linkedin %}
+                            <a class="app-hero-link" target="_blank" href="https://www.linkedin.com/in/{{ site.data.profile.linkedin }}">
+                                <i class="fab fa-linkedin"></i> LinkedIn
+                            </a>
+                            {% endif %}
+
+                            {% if site.data.profile.gscholar %}
+                            {%- if site.data.profile.gscholar contains 'scholar.google' -%}
+                            {%- assign gscholar_url = site.data.profile.gscholar -%}
+                            {%- else -%}
+                            {%- assign gscholar_url = 'https://scholar.google.com/citations?user=' | append: site.data.profile.gscholar -%}
+                            {%- endif -%}
+                            <a class="app-hero-link" target="_blank" href="{{ gscholar_url }}">
+                                <i class="fab fa-google-scholar"></i> Google Scholar
+                            </a>
+                            {% endif %}
+
+                            {% if site.data.profile.orcid %}
+                            <a class="app-hero-link" target="_blank" href="https://orcid.org/{{ site.data.profile.orcid }}">
+                                <i class="fab fa-orcid"></i> ORCID
+                            </a>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    {% if site.data.profile.portrait_url %}
+                    <div class="d-flex justify-content-md-end justify-content-start">
+                        <img
+                            src="{{ site.data.profile.portrait_url | relative_url }}"
+                            alt="{{ site.data.profile.portrait_caption }}"
+                            class="app-hero-portrait">
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% if site.data.profile.wechat_qrcode %}
+<div class="modal fade" id="modal-wechat" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-body p-0">
+                <img src="{{ site.data.profile.wechat_qrcode | relative_url }}" class="img-fluid">
+            </div>
+            {% if site.data.profile.wechat_prompt %}
+            <div class="modal-body p-1">
+                {{ site.data.profile.wechat_prompt }}
+            </div>
+            {% endif %}
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
