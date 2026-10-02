@@ -1,27 +1,113 @@
----
-layout: default
-title : Homepage
-navbar_title: Home
----
-{% include widgets/profile_card.html %}
-
-{% if site.data.display.homepage.show_experience %}
-    {% include widgets/experience_card.html %}
-{% endif %}
-
-{% if site.data.display.homepage.show_news %}
-    {% assign count_news = site.news | size %}
-    {% if count_news > 0 %}
-        {% include widgets/news_card.html limit=site.data.display.homepage.num_news %}
-    {% endif %}
-{% endif %}
-
-{% if site.data.display.homepage.show_selected_publications %}
-    {% assign pubs = site.publications | sort: "date" | reverse | where: "selected", true %}
-    {% 
-        include widgets/publication_card.html 
-        publications=pubs
-        section_id='pub'
-        title='<i class="fas fa-star"></i> Selected Publications'
-    %}
-{% endif %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Keyu Zhu | 朱柯宇</title>
+  <meta name="description" content="Keyu Zhu (朱柯宇), incoming PhD student at Shanghai Jiao Tong University and B.Eng. student in Computer Science at SUSTech.">
+  <link rel="canonical" href="https://keyuzhu19.github.io/">
+  <link href="https://fonts.googleapis.com/css?family=Titillium+Web:400,600,400italic,600italic,300,300italic" rel="stylesheet">
+  <style>
+    /* Adapted from Tairan He's homepage. Design credits: Jon Barron,
+       Deepak Pathak, Abhishek Kar, and Saurabh Gupta. */
+    a { color: #1772d0; text-decoration: none; }
+    a:focus, a:hover { color: #f09228; text-decoration: none; }
+    body, td, th { font-family: 'Titillium Web', Verdana, Helvetica, sans-serif; font-size: 16px; font-weight: 400; }
+    body { margin: 0; color: #222; background: #fff; line-height: 1.5; }
+    strong { font-weight: 600; }
+    hr { border: 0; height: 1px; background-image: linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,.75), rgba(0,0,0,0)); margin: 24px 0; }
+    .page { width: 900px; max-width: 100%; margin: auto; border-spacing: 0; }
+    .page > tbody > tr > td { padding: 20px; }
+    h1 { font-size: 38px; font-weight: 400; text-align: center; margin: 10px 0 22px; }
+    h2 { font-size: 22px; font-weight: 600; margin: 0 0 18px; padding: 0 20px; }
+    .profile, .publications { width: 100%; border-spacing: 0; }
+    .profile td { padding: 20px; vertical-align: top; }
+    .portrait-column { width: 30%; }
+    .portrait { width: 100%; height: auto; display: block; border-radius: 15px; }
+    .contact { text-align: center; line-height: 1.8; margin: 14px 0 0; }
+    .twitter-widget { text-align: center; margin: 12px 0; }
+    .degree { font-size: 14px; text-align: center; color: #666; margin-top: 12px; }
+    .bio { width: 70%; }
+    .bio p { margin: 0 0 16px; }
+    .publications td { padding: 15px; vertical-align: top; }
+    .paper-media { width: 40%; text-align: center; }
+    .paper-media video { width: 90%; border-radius: 15px; display: block; margin: auto; }
+    .paper-title { font-size: 17px; font-weight: 600; margin: 0 0 8px; line-height: 1.4; }
+    .paper-copy { width: 60%; }
+    .paper-copy p { margin: 8px 0; }
+    .contribution { font-size: 14px; color: #666; }
+    details { margin-top: 12px; }
+    summary { color: #1772d0; cursor: pointer; }
+    .service { padding: 0 20px 12px; }
+    footer { text-align: right; font-size: 13px; padding: 12px 20px; color: #666; }
+    @media (max-width: 600px) {
+      .page > tbody > tr > td { padding: 16px; }
+      .profile, .profile tbody, .profile tr, .profile td,
+      .publications, .publications tbody, .publications tr, .publications td { display: block; width: auto; }
+      .profile td, .publications td { padding: 12px 4px; }
+      .portrait-column { max-width: 220px; margin: auto; }
+      .paper-media video { width: 100%; max-width: 360px; }
+      h2, .service, footer { padding-left: 4px; padding-right: 4px; }
+      h1 { margin-bottom: 8px; }
+    }
+  </style>
+</head>
+<body>
+  <table class="page" role="presentation"><tbody><tr><td>
+    <h1>Keyu Zhu 「朱柯宇」</h1>
+    <table class="profile" role="presentation"><tbody><tr>
+      <td class="portrait-column">
+        <a href="assets/images/photos/portrait.jpg"><img class="portrait" src="assets/images/photos/portrait.jpg" alt="Keyu Zhu"></a>
+        <p class="contact">
+          | <a href="mailto:zhuky2023@mail.sustech.edu.cn">Email</a> |
+          <a href="https://scholar.google.com/citations?user=jNpZ_U0AAAAJ&amp;hl=en">Google Scholar</a> |<br>
+          | <a href="https://github.com/KeyuZHU19">GitHub</a> |
+          <a href="https://www.linkedin.com/in/keyu-zhu-7237433b2/">LinkedIn</a> |<br>
+          |
+          <a href="https://twitter.com/Kit_Key_">Twitter</a> |<br>
+          | <a href="https://www.xiaohongshu.com/user/profile/6753e2a1000000000800967c">RedNote(小红书)</a> |
+        </p>
+        <div class="twitter-widget">
+          <a href="https://twitter.com/Kit_Key_" class="twitter-follow-button" data-show-count="false" data-dnt="true">Follow @Kit_Key_</a>
+        </div>
+        <p class="degree">B.Eng. student in Computer Science<br>SUSTech</p>
+      </td>
+      <td class="bio">
+        <p>I am currently an incoming PhD student at the School of Artificial Intelligence, <a href="https://en.sjtu.edu.cn/">Shanghai Jiao Tong University</a>.</p>
+        <p>I am an undergraduate student in Computer Science at <a href="https://www.sustech.edu.cn/en/">Southern University of Science and Technology (SUSTech)</a>, where I work closely with <a href="https://faculty.sustech.edu.cn/fengzheng/?lang=en">Prof. Feng Zheng</a> and <a href="https://homepage.hit.edu.cn/yangjinyu">Prof. Jinyu Yang</a>. I also spent time visiting <a href="https://www.ucdavis.edu/">UC Davis</a>, working with <a href="https://faculty.engineering.ucdavis.edu/jzhang/">Prof. Junshan Zhang</a>.</p>
+        <p>I previously interned at <a href="https://www.spatialtemporal.ai/home">Spatialtemporal AI</a> and <a href="https://www.chinaunicom.com/">China Unicom</a>.</p>
+        <p><strong>Research Interest:</strong> The intersection of <u>robotics</u>, <u>large-scale machine learning</u>, and <u>representation learning</u>.</p>
+        <p>Email: <a href="mailto:zhuky2023@mail.sustech.edu.cn">zhuky2023 [AT] mail.sustech.edu.cn</a></p>
+      </td>
+    </tr></tbody></table>
+    <hr>
+    <section id="pub" aria-labelledby="publications-heading">
+      <h2 id="publications-heading">Selected Publications</h2>
+      <table class="publications" role="presentation"><tbody><tr>
+        <td class="paper-media">
+          <video autoplay loop muted playsinline preload="metadata" poster="assets/images/covers/radar-iros-cover.png" aria-label="RADAR robotic data generation demonstration">
+            <source src="https://kite-sense.github.io/RADAR_video.mp4" type="video/mp4">
+            <a href="https://kite-sense.github.io/RADAR_video.mp4">Watch the RADAR demonstration</a>
+          </video>
+        </td>
+        <td class="paper-copy">
+          <h3 class="paper-title"><a href="https://arxiv.org/abs/2603.11811">RADAR: Closed-Loop Robotic Data Generation via Semantic Planning and Autonomous Causal Environment Reset</a></h3>
+          <p>Yongzhong Wang*, <strong>Keyu Zhu*</strong>, Yong Zhong*, Liqiong Wang, Jinyu Yang, Feng Zheng</p>
+          <p>IROS 2026</p>
+          <p class="contribution">* Equal contribution</p>
+          <p><a href="https://arxiv.org/pdf/2603.11811">pdf</a> | <a href="https://arxiv.org/abs/2603.11811">arXiv</a></p>
+          <details><summary>abstract</summary><p>RADAR is a fully autonomous closed-loop robotic data generation pipeline that combines semantic planning, in-context imitation learning, automated success evaluation, and causal environment reset to scale real-world robot data collection with minimal human intervention.</p></details>
+        </td>
+      </tr></tbody></table>
+    </section>
+    <hr>
+    <section id="service" aria-labelledby="service-heading">
+      <h2 id="service-heading">Reviewer Service</h2>
+      <p class="service">IEEE/RSJ International Conference on Intelligent Robots and Systems <strong>(IROS)</strong>, 2026</p>
+    </section>
+    <hr>
+    <footer>Website template adapted from <a href="https://tairanhe.com/">Tairan He</a>, <a href="https://jonbarron.info/">Jon Barron</a>, and <a href="https://www.cs.cmu.edu/~dpathak/">Deepak Pathak</a>.</footer>
+  </td></tr></tbody></table>
+  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</body>
+</html>
