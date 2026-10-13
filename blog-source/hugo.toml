@@ -1,0 +1,76 @@
+baseURL = "https://keyuzhu19.github.io/blog/"
+locale = "en-US"
+title = "Keyu's Blog"
+theme = "hugo-PaperMod-master"
+themesDir = "../.blog-build/theme"
+enableRobotsTXT = false
+disableKinds = ["section"]
+
+[pagination]
+pagerSize = 10
+
+[outputs]
+home = ["HTML", "RSS", "JSON"]
+
+[taxonomies]
+tag = "tags"
+
+[params]
+env = "production"
+author = "Keyu Zhu"
+description = "Learning notes by Keyu Zhu."
+defaultTheme = "light"
+disableThemeToggle = false
+mainSections = ["posts"]
+ShowReadingTime = true
+ShowToc = true
+TocOpen = false
+ShowCodeCopyButtons = true
+ShowPostNavLinks = true
+ShowBreadCrumbs = true
+DateFormat = "January 2, 2006"
+
+[params.homeInfoParams]
+Title = "Welcome to Keyu's Blog"
+Content = "Learning notes on robotics, machine learning, and representation learning. No posts yet."
+
+[params.assets]
+favicon = "https://keyuzhu19.github.io/favicon.svg?v=2"
+disableHLJS = true
+
+[[params.socialIcons]]
+name = "github"
+url = "https://github.com/KeyuZHU19"
+
+[[params.socialIcons]]
+name = "x"
+url = "https://x.com/KeyuZhu19"
+
+[[params.socialIcons]]
+name = "rss"
+url = "https://keyuzhu19.github.io/blog/index.xml"
+
+[[menu.main]]
+name = "Posts"
+url = "/"
+weight = 10
+
+[[menu.main]]
+name = "Archive"
+url = "/archives/"
+weight = 20
+
+[[menu.main]]
+name = "Search"
+url = "/search/"
+weight = 30
+
+[[menu.main]]
+name = "Tags"
+url = "/tags/"
+weight = 40
+
+[[menu.main]]
+name = "Homepage"
+url = "https://keyuzhu19.github.io/"
+weight = 50
