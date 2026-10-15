@@ -20,6 +20,12 @@
        Deepak Pathak, Abhishek Kar, and Saurabh Gupta. */
     a { color: #1772d0; text-decoration: none; }
     a:focus, a:hover { color: #f09228; text-decoration: none; }
+    .university-link { font-weight: 700; }
+    .university-link--sustech { color: #ed6d00; }
+    .university-link--sjtu { color: #b01f24; }
+    .university-link:hover, .university-link:focus { color: inherit; text-decoration: underline; }
+    .university-link--sustech:hover, .university-link--sustech:focus { color: #ed6d00; }
+    .university-link--sjtu:hover, .university-link--sjtu:focus { color: #b01f24; }
     body, td, th { font-family: "Inter", sans-serif; font-size: 16px; font-weight: 400; }
     body { margin: 0; color: #222; background: #fff; line-height: 1.5; }
     strong { font-weight: 600; }
@@ -34,7 +40,6 @@
     .portrait { width: 100%; height: auto; display: block; border-radius: 15px; }
     .contact { text-align: center; line-height: 1.8; margin: 14px 0 0; }
     .twitter-widget { text-align: center; margin: 12px 0; }
-    .degree { font-size: 14px; text-align: center; color: #666; margin-top: 12px; }
     .bio { width: 70%; }
     .bio p { margin: 0 0 16px; }
     .publications td { padding: 15px; vertical-align: top; }
@@ -47,7 +52,6 @@
     details { margin-top: 12px; }
     summary { color: #1772d0; cursor: pointer; }
     .service { padding: 0 20px 12px; }
-    footer { text-align: right; font-size: 13px; padding: 12px 20px; color: #666; }
     @media (max-width: 600px) {
       .page > tbody > tr > td { padding: 16px; }
       .profile, .profile tbody, .profile tr, .profile td,
@@ -55,7 +59,7 @@
       .profile td, .publications td { padding: 12px 4px; }
       .portrait-column { max-width: 220px; margin: auto; }
       .paper-media video { width: 100%; max-width: 360px; }
-      h2, .service, footer { padding-left: 4px; padding-right: 4px; }
+      h2, .service { padding-left: 4px; padding-right: 4px; }
       h1 { margin-bottom: 8px; }
     }
   </style>
@@ -79,11 +83,10 @@
         <div class="twitter-widget">
           <a href="https://x.com/KeyuZhu19" class="twitter-follow-button" data-screen-name="KeyuZhu19" data-show-count="false" data-dnt="true">Follow @KeyuZhu19</a>
         </div>
-        <p class="degree">B.Eng. student in Computer Science<br>SUSTech</p>
       </td>
       <td class="bio">
-        <p>I am currently an incoming PhD student at the <a href="https://soai.sjtu.edu.cn/cn/article/xyjj">School of Artificial Intelligence</a>, <a href="https://en.sjtu.edu.cn/">Shanghai Jiao Tong University</a>.</p>
-        <p>I am an undergraduate student in Computer Science at <a href="https://www.sustech.edu.cn/en/">Southern University of Science and Technology (SUSTech)</a>, where I work closely with <a href="https://faculty.sustech.edu.cn/fengzheng/?lang=en">Prof. Feng Zheng</a> and <a href="https://homepage.hit.edu.cn/yangjinyu">Prof. Jinyu Yang</a>. I also spent time visiting <a href="https://www.ucdavis.edu/">UC Davis</a>, working with <a href="https://faculty.engineering.ucdavis.edu/jzhang/">Prof. Junshan Zhang</a>.</p>
+        <p>I am currently an incoming PhD student at the <a href="https://soai.sjtu.edu.cn/cn/article/xyjj">School of Artificial Intelligence</a>, <a class="university-link university-link--sjtu" href="https://en.sjtu.edu.cn/">Shanghai Jiao Tong University</a>.</p>
+        <p>I am an undergraduate student in Computer Science at <a class="university-link university-link--sustech" href="https://www.sustech.edu.cn/en/">Southern University of Science and Technology (SUSTech)</a>, where I work closely with <a href="https://faculty.sustech.edu.cn/fengzheng/?lang=en">Prof. Feng Zheng</a> and <a href="https://homepage.hit.edu.cn/yangjinyu">Prof. Jinyu Yang</a>. I also spent time visiting <a href="https://www.ucdavis.edu/">UC Davis</a>, working with <a href="https://faculty.engineering.ucdavis.edu/jzhang/">Prof. Junshan Zhang</a>.</p>
         <p>I previously interned at <a href="https://www.spatialtemporal.ai/home">Spatialtemporal AI</a> and <a href="https://www.chinaunicom.com/">China Unicom</a>.</p>
         <p><strong>Research Interest:</strong> The intersection of <u>robotics</u>, <u>large-scale machine learning</u>, and <u>representation learning</u>.</p>
         <p>Email: <a href="mailto:zhuky2023@mail.sustech.edu.cn">zhuky2023 [AT] mail.sustech.edu.cn</a></p>
@@ -114,8 +117,6 @@
       <h2 id="service-heading">Reviewer Service</h2>
       <p class="service">IEEE/RSJ International Conference on Intelligent Robots and Systems <strong>(IROS)</strong>, 2026</p>
     </section>
-    <hr>
-    <footer>Website template adapted from <a href="https://tairanhe.com/">Tairan He</a>, <a href="https://jonbarron.info/">Jon Barron</a>, and <a href="https://www.cs.cmu.edu/~dpathak/">Deepak Pathak</a>.</footer>
   </td></tr></tbody></table>
   <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 </body>
