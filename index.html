@@ -7,13 +7,20 @@
   <link rel="icon" type="image/svg+xml" href="favicon.svg?v=2">
   <meta name="description" content="Keyu Zhu (朱柯宇), incoming PhD student at Shanghai Jiao Tong University and B.Eng. student in Computer Science at SUSTech.">
   <link rel="canonical" href="https://keyuzhu19.github.io/">
-  <link href="https://fonts.googleapis.com/css?family=Titillium+Web:400,600,400italic,600italic,300,300italic" rel="stylesheet">
+  <link rel="preload" href="assets/fonts/InterVariable.woff2" as="font" type="font/woff2" crossorigin>
   <style>
+    @font-face {
+      font-family: "Inter";
+      src: url("assets/fonts/InterVariable.woff2") format("woff2");
+      font-style: normal;
+      font-weight: 100 900;
+      font-display: swap;
+    }
     /* Adapted from Tairan He's homepage. Design credits: Jon Barron,
        Deepak Pathak, Abhishek Kar, and Saurabh Gupta. */
     a { color: #1772d0; text-decoration: none; }
     a:focus, a:hover { color: #f09228; text-decoration: none; }
-    body, td, th { font-family: 'Titillium Web', Verdana, Helvetica, sans-serif; font-size: 16px; font-weight: 400; }
+    body, td, th { font-family: "Inter", sans-serif; font-size: 16px; font-weight: 400; }
     body { margin: 0; color: #222; background: #fff; line-height: 1.5; }
     strong { font-weight: 600; }
     hr { border: 0; height: 1px; background-image: linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,.75), rgba(0,0,0,0)); margin: 24px 0; }
