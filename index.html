@@ -105,7 +105,6 @@
     .tldr-toggle span { display: inline-block; }
     .tldr-toggle[aria-expanded="true"] span { transform: rotate(90deg); }
     .paper .tldr { margin-top: .5em; }
-    .author-notes { font-size: .85em; }
     #service p { margin: 0; }
 
     @media (max-width: 640px) {
@@ -166,8 +165,7 @@
           <div class="paper-links">
             <span class="tldr-action" hidden><button class="tldr-toggle" type="button" aria-expanded="false" aria-controls="radar-tldr"><span aria-hidden="true">▸</span> TL;DR</button><span class="link-divider" aria-hidden="true">•</span></span><a href="https://arxiv.org/pdf/2603.11811">PDF</a><span class="link-divider" aria-hidden="true">•</span><a href="https://arxiv.org/abs/2603.11811">arXiv</a><span class="link-divider" aria-hidden="true">•</span><a href="assets/videos/radar.mp4">Video</a>
           </div>
-          <p class="tldr" id="radar-tldr">RADAR collects robot training data autonomously by planning tasks, executing them through imitation learning, checking success, and resetting the workspace.</p>
-          <p class="author-notes">* Equal contribution <span class="link-divider" aria-hidden="true">•</span> † Corresponding author</p>
+          <p class="tldr" id="radar-tldr">RADAR is a fully autonomous closed-loop robotic data generation pipeline that combines semantic planning, in-context imitation learning, automated success evaluation, and causal environment reset to scale real-world robot data collection with minimal human intervention.</p>
         </div>
       </article>
     </section>
