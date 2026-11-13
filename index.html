@@ -8,7 +8,14 @@
   <meta name="description" content="Keyu Zhu (朱柯宇), incoming PhD student at Shanghai Jiao Tong University and B.Eng. student in Computer Science at SUSTech.">
   <meta name="google-site-verification" content="KIYqb5cv6i7T6Eew-R6WvpS6TDI8xFtK9RqwvYF4V7I">
   <link rel="canonical" href="https://keyuzhu19.github.io/">
+  <link rel="preload" href="assets/fonts/Slideqiuhong-name.woff2" as="font" type="font/woff2" crossorigin>
   <style>
+    @font-face {
+      font-family: "Slide Qiuhong";
+      src: url("assets/fonts/Slideqiuhong-name.woff2") format("woff2");
+      font-display: swap;
+    }
+
     :root {
       color-scheme: light;
       --ink: #150c21;
@@ -36,7 +43,11 @@
     }
 
     h1 { margin: 0; font-size: 2.4em; font-weight: 500; line-height: 3; }
-    .chinese-name { display: inline-block; margin-left: .22em; }
+    .chinese-name {
+      display: inline-block;
+      margin-left: .22em;
+      font: 1.06em "Slide Qiuhong", "Noto Serif CJK SC", serif;
+    }
 
     .bio p { margin: 0 0 1.5em; }
     .contact { display: flex; flex-wrap: wrap; gap: .45rem 1.6rem; }
