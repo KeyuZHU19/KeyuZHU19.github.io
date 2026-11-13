@@ -93,6 +93,9 @@
     .venue { color: #174a7e; font-style: italic; font-weight: 700; }
     .link-divider { margin: 0 .45rem; }
     .tldr-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: .28em;
       padding: 0;
       border: 0;
       background: none;
@@ -102,8 +105,13 @@
       white-space: nowrap;
     }
     .tldr-toggle:hover { text-decoration: underline; }
-    .tldr-toggle span { display: inline-block; }
-    .tldr-toggle[aria-expanded="true"] span { transform: rotate(90deg); }
+    .tldr-caret {
+      width: .52em;
+      height: .52em;
+      background: currentColor;
+      clip-path: polygon(10% 8%, 90% 50%, 10% 92%);
+    }
+    .tldr-toggle[aria-expanded="true"] .tldr-caret { transform: rotate(90deg); }
     .paper .tldr { margin-top: .5em; }
     #service p { margin: 0; }
 
@@ -163,7 +171,7 @@
           <p class="authors">Yongzhong Wang<sup>*</sup>, <strong>Keyu Zhu<sup>*</sup></strong>, Yong Zhong<sup>*</sup>, Liqiong Wang, Jinyu Yang<sup>†</sup>, Feng Zheng</p>
           <p class="venue">IROS 2026</p>
           <div class="paper-links">
-            <span class="tldr-action" hidden><button class="tldr-toggle" type="button" aria-expanded="false" aria-controls="radar-tldr"><span aria-hidden="true">▸</span> TL;DR</button><span class="link-divider" aria-hidden="true">•</span></span><a href="https://arxiv.org/pdf/2603.11811">PDF</a><span class="link-divider" aria-hidden="true">•</span><a href="https://arxiv.org/abs/2603.11811">arXiv</a><span class="link-divider" aria-hidden="true">•</span><a href="assets/videos/radar.mp4">Video</a>
+            <span class="tldr-action" hidden><button class="tldr-toggle" type="button" aria-expanded="false" aria-controls="radar-tldr"><span class="tldr-caret" aria-hidden="true"></span>TL;DR</button><span class="link-divider" aria-hidden="true">•</span></span><a href="https://arxiv.org/pdf/2603.11811">PDF</a><span class="link-divider" aria-hidden="true">•</span><a href="https://arxiv.org/abs/2603.11811">arXiv</a><span class="link-divider" aria-hidden="true">•</span><a href="assets/videos/radar.mp4">Video</a>
           </div>
           <p class="tldr" id="radar-tldr">RADAR is a fully autonomous closed-loop robotic data generation pipeline that combines semantic planning, in-context imitation learning, automated success evaluation, and causal environment reset to scale real-world robot data collection with minimal human intervention.</p>
         </div>
