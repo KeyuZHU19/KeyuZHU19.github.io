@@ -93,10 +93,10 @@
     .venue { color: #174a7e; font-style: italic; font-weight: 700; }
     .link-divider { margin: 0 .45rem; }
     .tldr-toggle {
-      display: inline-flex;
-      align-items: center;
-      gap: .28em;
-      padding: 0;
+      position: relative;
+      display: inline-block;
+      vertical-align: baseline;
+      padding: 0 0 0 .8em;
       border: 0;
       background: none;
       color: var(--link);
@@ -106,12 +106,16 @@
     }
     .tldr-toggle:hover { text-decoration: underline; }
     .tldr-caret {
+      position: absolute;
+      top: 50%;
+      left: 0;
       width: .52em;
       height: .52em;
       background: currentColor;
       clip-path: polygon(10% 8%, 90% 50%, 10% 92%);
+      transform: translateY(-50%);
     }
-    .tldr-toggle[aria-expanded="true"] .tldr-caret { transform: rotate(90deg); }
+    .tldr-toggle[aria-expanded="true"] .tldr-caret { transform: translateY(-50%) rotate(90deg); }
     .paper .tldr { margin-top: .5em; }
     #service p { margin: 0; }
 
