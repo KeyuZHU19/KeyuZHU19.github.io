@@ -92,10 +92,20 @@
     .authors sup { font-size: .75em; line-height: 0; }
     .venue { color: #174a7e; font-style: italic; font-weight: 700; }
     .link-divider { margin: 0 .45rem; }
-    .paper details, .paper summary { display: inline; }
-    .paper summary { color: var(--link); cursor: pointer; }
-    .paper summary:hover { text-decoration: underline; }
-    .paper details p { margin-top: .5em; }
+    .tldr-toggle {
+      padding: 0;
+      border: 0;
+      background: none;
+      color: var(--link);
+      font: inherit;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .tldr-toggle:hover { text-decoration: underline; }
+    .tldr-toggle span { display: inline-block; }
+    .tldr-toggle[aria-expanded="true"] span { transform: rotate(90deg); }
+    .paper .tldr { margin-top: .5em; }
+    .author-notes { font-size: .85em; }
     #service p { margin: 0; }
 
     @media (max-width: 640px) {
@@ -151,14 +161,13 @@
         </a>
         <div class="paper-copy">
           <h3><a href="https://arxiv.org/abs/2603.11811">RADAR: Closed-Loop Robotic Data Generation via Semantic Planning and Autonomous Causal Environment Reset</a></h3>
-          <p class="authors">Yongzhong Wang<sup>*</sup>, <strong>Keyu Zhu<sup>*</sup></strong>, Yong Zhong<sup>*</sup>, Liqiong Wang, Jinyu Yang, Feng Zheng</p>
+          <p class="authors">Yongzhong Wang<sup>*</sup>, <strong>Keyu Zhu<sup>*</sup></strong>, Yong Zhong<sup>*</sup>, Liqiong Wang, Jinyu Yang<sup>†</sup>, Feng Zheng</p>
           <p class="venue">IROS 2026</p>
-          <a href="https://arxiv.org/pdf/2603.11811">PDF</a><span class="link-divider" aria-hidden="true">•</span><a href="https://arxiv.org/abs/2603.11811">arXiv</a><span class="link-divider" aria-hidden="true">•</span><a href="assets/videos/radar.mp4">Video</a><span class="link-divider" aria-hidden="true">•</span>
-          <details>
-            <summary>Abstract</summary>
-            <p>RADAR is a fully autonomous closed-loop robotic data generation pipeline that combines semantic planning, in-context imitation learning, automated success evaluation, and causal environment reset to scale real-world robot data collection with minimal human intervention.</p>
-            <p><small>* Equal contribution</small></p>
-          </details>
+          <div class="paper-links">
+            <span class="tldr-action" hidden><button class="tldr-toggle" type="button" aria-expanded="false" aria-controls="radar-tldr"><span aria-hidden="true">▸</span> TL;DR</button><span class="link-divider" aria-hidden="true">•</span></span><a href="https://arxiv.org/pdf/2603.11811">PDF</a><span class="link-divider" aria-hidden="true">•</span><a href="https://arxiv.org/abs/2603.11811">arXiv</a><span class="link-divider" aria-hidden="true">•</span><a href="assets/videos/radar.mp4">Video</a>
+          </div>
+          <p class="tldr" id="radar-tldr">RADAR collects robot training data autonomously by planning tasks, executing them through imitation learning, checking success, and resetting the workspace.</p>
+          <p class="author-notes">* Equal contribution <span class="link-divider" aria-hidden="true">•</span> † Corresponding author</p>
         </div>
       </article>
     </section>
@@ -171,6 +180,17 @@
   </main>
 
   <script>
+    const tldrAction = document.querySelector('.tldr-action');
+    const tldrToggle = tldrAction.querySelector('button');
+    const tldr = document.getElementById(tldrToggle.getAttribute('aria-controls'));
+    tldrToggle.addEventListener('click', () => {
+      const expanded = tldrToggle.getAttribute('aria-expanded') === 'true';
+      tldrToggle.setAttribute('aria-expanded', String(!expanded));
+      tldr.hidden = expanded;
+    });
+    tldr.hidden = true;
+    tldrAction.hidden = false;
+
     const tablist = document.querySelector('[role="tablist"]');
     const tabs = Array.from(tablist.querySelectorAll('[role="tab"]'));
     const panels = tabs.map(tab => document.getElementById(tab.getAttribute('aria-controls')));
