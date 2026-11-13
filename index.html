@@ -99,17 +99,16 @@
     #service p { margin: 0; }
 
     @media (max-width: 640px) {
-      .page { padding-bottom: 3em; }
-      .intro { grid-template-columns: 1fr; gap: 16px; padding-top: 16px; }
-      h1 { margin-bottom: 16px; font-size: 2.1em; line-height: 1.25; }
-      .bio p { margin-bottom: 1em; }
-      .portrait { width: min(42%, 180px); justify-self: end; }
-      .contact { gap: .35rem 1rem; }
-      .tabs { gap: .35rem 1.05rem; }
-      .tab { font-size: 1.35em; }
-      .panel { margin-top: .75em; }
-      .paper { grid-template-columns: 1fr; gap: 12px; }
-      .paper-preview { max-width: 320px; }
+      html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+      /* Fit the desktop columns within the same side margins as the reference. */
+      .page { width: 88%; font-size: clamp(.5rem, 2vw, .8125rem); }
+      .intro { gap: 2em; }
+      h1 { font-size: 1.92em; }
+      .contact { gap: .3em 1.6em; }
+      .tabs { gap: .35em 1.3em; }
+      .tab { font-size: 1.3em; }
+      .paper { font-size: .85em; }
+      .link-divider { margin: 0 .45em; }
     }
   </style>
 </head>
