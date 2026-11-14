@@ -213,7 +213,7 @@
       }
     }
 
-    function selectTab(index, updateUrl = false) {
+    function selectTab(index) {
       tabs.forEach((tab, i) => {
         const selected = i === index;
         tab.setAttribute('aria-selected', String(selected));
@@ -222,7 +222,6 @@
       });
 
       updatePreview();
-      if (updateUrl) history.replaceState(null, '', '#' + panels[index].id);
     }
 
     function selectFromHash() {
@@ -234,7 +233,7 @@
       panels[index].setAttribute('role', 'tabpanel');
       panels[index].setAttribute('aria-labelledby', tab.id);
       panels[index].tabIndex = 0;
-      tab.addEventListener('click', () => selectTab(index, true));
+      tab.addEventListener('click', () => selectTab(index));
     });
 
     tablist.addEventListener('keydown', event => {
@@ -249,7 +248,7 @@
         default: return;
       }
       event.preventDefault();
-      selectTab(next, true);
+      selectTab(next);
       tabs[next].focus();
     });
 
